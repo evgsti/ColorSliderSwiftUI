@@ -81,59 +81,6 @@ struct ContentView: View {
     ContentView()
 }
 
-struct ColorSliderView: View {
-    @Binding var sliderValue: Double
-    @Binding var textFieldValue: String
-    
-    var body: some View {
-        HStack {
-            Text(lround(sliderValue).formatted())
-                .frame(maxWidth: 31, alignment: .leading)
-                .foregroundStyle(.white)
-            
-            Slider(value: $sliderValue, in: 0...255, step: 1)
-            
-            TextField("", text: $textFieldValue)
-                .tint(.blue)
-                .textFieldStyle(PlainTextFieldStyle())
-                .frame(width: 31)
-                .keyboardType(.numberPad)
-                .padding(5)
-                .background(.white)
-                .foregroundStyle(.black)
-                .cornerRadius(5)
-                .overlay(RoundedRectangle(cornerRadius: 5)
-                    .stroke(Color.gray, lineWidth: 1))
-                .onAppear {
-                    textFieldValue = String(format: "%.0f", sliderValue)
-                }
-                .onChange(of: sliderValue) {
-                    textFieldValue = String(format: "%.0f", sliderValue)
-                }
-        }
-    }
-}
-
-struct ColorView: View {
-    @Binding var redSliderValue: Double
-    @Binding var greenSliderValue: Double
-    @Binding var blueSliderValue: Double
-    
-    var body: some View {
-        Rectangle()
-            .foregroundStyle(Color(red: redSliderValue / 255,
-                                   green: greenSliderValue / 255,
-                                   blue: blueSliderValue / 255))
-            .frame(height: 128)
-            .clipShape(.rect(cornerRadius: 25))
-            .overlay(
-                RoundedRectangle(cornerRadius: 25)
-                    .stroke(.white, lineWidth: 4)
-            )
-            .padding(.bottom, 53)
-    }
-}
-
 extension View {
     func hideKeyboard() {
         UIApplication.shared.sendAction(
