@@ -26,3 +26,11 @@ struct ColorView: View {
             .padding(.bottom, 53)
     }
 }
+
+#Preview {
+    @Previewable @State var redSliderValue: Double = 128.0
+    @Previewable @State var greenSliderValue: Double = 128.0
+    @Previewable @State var blueSliderValue: Double = 128.0
+    
+    ColorView(redSliderValue: $redSliderValue, greenSliderValue: $greenSliderValue, blueSliderValue: $blueSliderValue)
+}

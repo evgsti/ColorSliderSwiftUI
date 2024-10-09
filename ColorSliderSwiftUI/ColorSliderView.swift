@@ -39,3 +39,10 @@ struct ColorSliderView: View {
         }
     }
 }
+
+#Preview {
+    @Previewable @State var sliderValue: Double = 128.0
+    @Previewable @State var textFieldValue: String = "128"
+    
+    ColorSliderView(sliderValue: $sliderValue, textFieldValue: $textFieldValue)
+}
